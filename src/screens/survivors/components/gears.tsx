@@ -8,13 +8,19 @@ interface Item {
 
 interface Props {
   data: (Item | undefined)[];
+  onPress: (index: number) => any;
 }
 
-const Gears = ({data}: Props) => {
+const Gears = ({data, onPress}: Props) => {
   return (
     <Wrapper>
       {data?.map((item, index) => (
-        <Gear width="30%" key={index} title={item?.name || 'None'} />
+        <Gear
+          width="30%"
+          key={index}
+          title={item?.name || 'None'}
+          onPress={() => onPress(index)}
+        />
       ))}
     </Wrapper>
   );
