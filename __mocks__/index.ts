@@ -1,1 +1,5 @@
-export {mockNavigate} from './@react-navigation/native';
+export {
+  mockGoBack,
+  mockNavigate,
+  mockUseRoute,
+} from './@react-navigation/native';

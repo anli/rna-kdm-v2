@@ -1,6 +1,7 @@
+import {Screen} from '@components';
 import React from 'react';
 import {IconButton, List} from 'react-native-paper';
-import {Gears, Screen} from './components';
+import {Gears} from './components';
 import useSurvivors from './hooks';
 
 const Component = () => {

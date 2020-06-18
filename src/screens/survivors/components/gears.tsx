@@ -1,6 +1,6 @@
+import {Gear} from '@components';
 import React from 'react';
 import styled from 'styled-components/native';
-import Gear from './gear';
 
 interface Item {
   name: string;

@@ -46,10 +46,10 @@ defineFeature(feature, test => {
     given('I press "Cloth"', async () => {});
 
     when(/^I press "(.*)"$/, async button => {
-      if (button === 'Confirm') {
+      if (button === 'CONFIRM') {
         act(() => {
           store.dispatch(
-            survivorSlice.actions.setGear({item: {name: 'Cloth'}, index: 1}),
+            survivorSlice.actions.setGear({item: {name: 'Cloth'}, index: 0}),
           );
         });
         return;

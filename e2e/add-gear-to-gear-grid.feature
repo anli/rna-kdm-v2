@@ -16,5 +16,5 @@ Feature: add gear to gear grid
 
     Examples:
       | button  | result |
-      | Confirm | Cloth  |
-      | Cancel  | None   |
+      | CONFIRM | Cloth  |
+      | CANCEL  | None   |
