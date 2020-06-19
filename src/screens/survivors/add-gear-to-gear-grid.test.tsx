@@ -29,10 +29,11 @@ defineFeature(feature, test => {
         reducer: {survivor: survivorSlice.reducer},
       });
       component = render(<SurvivorsScreen.Component />, store);
+
+      fireEvent.press(component.getByTestId('GearAddButton'));
     });
 
     given('I press "First Gear"', async () => {
-      fireEvent.press(component.getByTestId('GearAddButton'));
       fireEvent.press(component.getAllByText('None')[0]);
     });
 

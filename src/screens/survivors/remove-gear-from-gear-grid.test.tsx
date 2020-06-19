@@ -39,10 +39,11 @@ defineFeature(feature, test => {
       component = render(<SurvivorsScreen.Component />, store);
     });
 
-    given('I am at "Survivors Screen"', async () => {});
+    given('I am at "Survivors Screen"', async () => {
+      fireEvent.press(component.getByTestId('GearRemoveButton'));
+    });
 
     given('I press "First Gear"', async () => {
-      fireEvent.press(component.getByTestId('GearRemoveButton'));
       fireEvent.press(component.getAllByText('Cloth')[0]);
     });
 
