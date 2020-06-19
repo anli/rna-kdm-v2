@@ -31,4 +31,29 @@ defineFeature(feature, test => {
       ).toBeVisible();
     });
   });
+
+  test('see gear select indicator at gear select screen', ({
+    given,
+    when,
+    then,
+  }) => {
+    given('I am any', async () => {});
+
+    given('I am at "Gear Select Screen"', async () => {
+      await expect(element(by.id('SurvivorsScreen'))).toBeVisible();
+      await element(by.text('None'))
+        .atIndex(0)
+        .tap();
+      await element(by.id('GearAddButton')).tap();
+      await expect(element(by.id('GearSelectScreen'))).toBeVisible();
+    });
+
+    when('I press "Cloth"', async () => {
+      await element(by.text('Cloth')).tap();
+    });
+
+    then('I should see "Cloth Selected Indicator"', async () => {
+      await expect(element(by.id('Gear.cloth.Selected'))).toBeVisible();
+    });
+  });
 });

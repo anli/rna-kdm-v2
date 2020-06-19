@@ -36,4 +36,18 @@ defineFeature(feature, test => {
       expect(component.getByTestId('Gear0.Selected')).toBeDefined();
     });
   });
+
+  test('see gear select indicator at gear select screen', ({
+    given,
+    when,
+    then,
+  }) => {
+    given('I am any', async () => {});
+
+    given('I am at "Gear Select Screen"', async () => {});
+
+    when('I press "Cloth"', async () => {});
+
+    then('I should see "Cloth Selected Indicator"', async () => {});
+  });
 });
