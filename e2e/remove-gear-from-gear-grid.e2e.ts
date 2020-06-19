@@ -29,7 +29,7 @@ defineFeature(feature, test => {
     });
 
     given('I press "First Gear"', async () => {
-      await expect(element(by.text('Cloth')).atIndex(0)).toBeVisible();
+      await element(by.text('Cloth')).tap();
     });
 
     when('I press "Remove Gear"', async () => {
