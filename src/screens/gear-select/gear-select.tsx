@@ -15,6 +15,7 @@ const Component = () => {
           sections={data?.gears}
           renderItem={({item}) => (
             <Gear
+              testID={`Gear${item.id}`}
               width="100%"
               key={item.id}
               title={item.name}
