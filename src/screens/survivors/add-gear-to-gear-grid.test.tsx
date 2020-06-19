@@ -32,6 +32,7 @@ defineFeature(feature, test => {
     });
 
     given('I press "First Gear"', async () => {
+      fireEvent.press(component.getByTestId('GearAddButton'));
       fireEvent.press(component.getAllByText('None')[0]);
     });
 

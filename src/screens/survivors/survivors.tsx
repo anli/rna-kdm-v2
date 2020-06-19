@@ -15,15 +15,21 @@ const Component = () => {
           right={props => (
             <>
               <IconButton
+                testID="GearRemoveButton"
+                {...props}
+                icon="delete"
+                onPress={actions.gearRemove}
+              />
+              <IconButton
                 testID="GearAddButton"
                 {...props}
                 icon="plus"
-                onPress={actions.onGearAdd}
+                onPress={actions.gearAdd}
               />
             </>
           )}
         />
-        <Gears data={data.gears} onPress={actions.onGearSelect} />
+        <Gears data={data.gears} onPress={actions.gearSelect} />
       </List.Section>
     </Screen>
   );
