@@ -1,4 +1,4 @@
-import {Gear, Screen} from '@components';
+import {Gear, Preview, Screen} from '@components';
 import React from 'react';
 import {Button as NativeButton, List} from 'react-native-paper';
 import {SectionGrid} from 'react-native-super-grid';
@@ -9,6 +9,7 @@ const Component = () => {
   const {data, actions} = useGearSelect();
   return (
     <Screen testID="GearSelectScreen">
+      <Preview testID="Preview" uri={data.selected?.imageUrl} />
       <Section>
         <SectionGrid<any>
           itemDimension={130}
