@@ -12,41 +12,27 @@ import {Provider as StoreProvider} from 'react-redux';
 
 const TopTabNavigation = createMaterialTopTabNavigator();
 
+const slices = ['survivor1', 'survivor2', 'survivor3', 'survivor4'];
+
+const getTopTab = (Navigator: any, slice: string, name: string) => {
+  return (
+    <Navigator.Screen
+      key={slice}
+      options={{
+        tabBarTestID: `${slice}TopTab`,
+      }}
+      name={name}
+      component={SurvivorsScreen.Component}
+      initialParams={{slice}}
+    />
+  );
+};
 const TopTabs = () => {
   return (
     <TopTabNavigation.Navigator>
-      <TopTabNavigation.Screen
-        options={{
-          tabBarTestID: 'survivor1TopTab',
-        }}
-        name="1"
-        component={SurvivorsScreen.Component}
-        initialParams={{slice: 'survivor1'}}
-      />
-      <TopTabNavigation.Screen
-        name="2"
-        component={SurvivorsScreen.Component}
-        options={{
-          tabBarTestID: 'survivor2TopTab',
-        }}
-        initialParams={{slice: 'survivor2'}}
-      />
-      <TopTabNavigation.Screen
-        name="3"
-        component={SurvivorsScreen.Component}
-        options={{
-          tabBarTestID: 'survivor3TopTab',
-        }}
-        initialParams={{slice: 'survivor3'}}
-      />
-      <TopTabNavigation.Screen
-        name="4"
-        component={SurvivorsScreen.Component}
-        options={{
-          tabBarTestID: 'survivor4TopTab',
-        }}
-        initialParams={{slice: 'survivor4'}}
-      />
+      {slices.map((slice, index) =>
+        getTopTab(TopTabNavigation, slice, String(index + 1)),
+      )}
     </TopTabNavigation.Navigator>
   );
 };
