@@ -1,4 +1,5 @@
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {GearSelectScreen, SurvivorsScreen} from '@screens';
@@ -9,12 +10,53 @@ import {Provider as PaperProvider} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Provider as StoreProvider} from 'react-redux';
 
+const TopTabNavigation = createMaterialTopTabNavigator();
+
+const TopTabs = () => {
+  return (
+    <TopTabNavigation.Navigator>
+      <TopTabNavigation.Screen
+        options={{
+          tabBarTestID: 'survivor1TopTab',
+        }}
+        name="1"
+        component={SurvivorsScreen.Component}
+        initialParams={{slice: 'survivor1'}}
+      />
+      <TopTabNavigation.Screen
+        name="2"
+        component={SurvivorsScreen.Component}
+        options={{
+          tabBarTestID: 'survivor2TopTab',
+        }}
+        initialParams={{slice: 'survivor2'}}
+      />
+      <TopTabNavigation.Screen
+        name="3"
+        component={SurvivorsScreen.Component}
+        options={{
+          tabBarTestID: 'survivor3TopTab',
+        }}
+        initialParams={{slice: 'survivor3'}}
+      />
+      <TopTabNavigation.Screen
+        name="4"
+        component={SurvivorsScreen.Component}
+        options={{
+          tabBarTestID: 'survivor4TopTab',
+        }}
+        initialParams={{slice: 'survivor4'}}
+      />
+    </TopTabNavigation.Navigator>
+  );
+};
+
 const Stack = createStackNavigator();
 const SurvivorsTab = () => (
   <Stack.Navigator>
     <Stack.Screen
       name="SurvivorsScreen"
-      component={SurvivorsScreen.Component}
+      component={TopTabs}
       options={SurvivorsScreen.options}
     />
   </Stack.Navigator>
