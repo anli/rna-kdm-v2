@@ -62,13 +62,13 @@ const gearResetEpic = (action$: any) =>
         await getDoc$(slice).update({
           gears,
         });
-        return characterSlices[slice].actions.setGearSuccess();
+        return characterSlices[slice].actions.gearResetSuccess();
       }
 
       await getDoc$(slice).set({
         gears,
       });
-      return characterSlices[slice].actions.setGearSuccess();
+      return characterSlices[slice].actions.gearResetSuccess();
     }),
   );
 

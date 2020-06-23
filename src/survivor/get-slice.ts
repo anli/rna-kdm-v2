@@ -24,6 +24,7 @@ const getSurvivorSlice = (initialState: SurvivorState, name: string) =>
         }
       },
       gearReset: () => {},
+      gearResetSuccess: () => {},
     },
   });
 
