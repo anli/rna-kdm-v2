@@ -59,6 +59,9 @@ const SettlementTab = () => (
 );
 const WHITE_BACKGROUND_STYLE = {backgroundColor: '#fff'};
 const Tab = createMaterialBottomTabNavigator();
+const getTabBarIcon = (icon: string) => ({color}: any) => (
+  <Icon name={icon} color={color} size={24} />
+);
 const Tabs = () => {
   return (
     <Tab.Navigator
@@ -68,9 +71,7 @@ const Tabs = () => {
       barStyle={WHITE_BACKGROUND_STYLE}>
       <Tab.Screen
         options={{
-          tabBarIcon: ({color}) => (
-            <Icon name="fireplace" color={color} size={24} />
-          ),
+          tabBarIcon: getTabBarIcon('fireplace'),
           tabBarTestID: 'SettlementBottomTab',
         }}
         name="SettlementTab"
@@ -78,9 +79,7 @@ const Tabs = () => {
       />
       <Tab.Screen
         options={{
-          tabBarIcon: ({color}) => (
-            <Icon name="human" color={color} size={24} />
-          ),
+          tabBarIcon: getTabBarIcon('human'),
           tabBarTestID: 'SurvivorsBottomTab',
         }}
         name="SurvivorsTab"
