@@ -7,6 +7,11 @@ import {StateObservable} from 'redux-observable';
 import {filter, map, switchMap} from 'rxjs/operators';
 import {default as characterSlices, default as survivorSlices} from './slice';
 
+const getDoc$ = (slice: Slice, tenant: string = '12032016') =>
+  firestore()
+    .collection(slice)
+    .doc(tenant);
+
 const load$ = (slice: Slice) => (action$: any) =>
   action$.pipe(
     filter(
@@ -27,27 +32,18 @@ const setGearEpic = (action$: any, state$: StateObservable<any>) =>
         action.payload.item,
       )(state$.value[slice].gears);
 
-      const {exists} = await firestore()
-        .collection(slice)
-        .doc('12032016')
-        .get();
+      const {exists} = await getDoc$(slice).get();
 
       if (exists) {
-        await firestore()
-          .collection(slice)
-          .doc('12032016')
-          .update({
-            gears,
-          });
+        await getDoc$(slice).update({
+          gears,
+        });
         return characterSlices[slice].actions.setGearSuccess();
       }
 
-      await firestore()
-        .collection(slice)
-        .doc('12032016')
-        .set({
-          gears,
-        });
+      await getDoc$(slice).set({
+        gears,
+      });
       return characterSlices[slice].actions.setGearSuccess();
     }),
   );
@@ -58,29 +54,20 @@ const gearResetEpic = (action$: any) =>
     switchMap(async (action: any) => {
       const slice = getSliceKey(action.type);
 
-      const {exists} = await firestore()
-        .collection(slice)
-        .doc('12032016')
-        .get();
+      const {exists} = await getDoc$(slice).get();
 
       const gears = [null, null, null, null, null, null, null, null, null];
 
       if (exists) {
-        await firestore()
-          .collection(slice)
-          .doc('12032016')
-          .update({
-            gears,
-          });
+        await getDoc$(slice).update({
+          gears,
+        });
         return characterSlices[slice].actions.setGearSuccess();
       }
 
-      await firestore()
-        .collection(slice)
-        .doc('12032016')
-        .set({
-          gears,
-        });
+      await getDoc$(slice).set({
+        gears,
+      });
       return characterSlices[slice].actions.setGearSuccess();
     }),
   );
